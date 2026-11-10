@@ -1,0 +1,10 @@
+.panel { display: grid; min-width: 0; gap: 8px; padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--background); }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 14px; }
+.heading button { min-height: 30px; padding: 2px 6px; font-size: 12px; }
+.field { min-width: 0; }
+.field :global(math-field) { display: block; min-height: 52px; width: 100%; max-width: 100%; padding: 8px; border: 1px solid #bcc9dd; border-radius: 8px; background: var(--surface); color: var(--ink); font-size: 22px; --primary: var(--accent); }
+.field :global(math-field:focus-within) { outline: 2px solid var(--accent); outline-offset: 1px; }
+.field :global(math-field::part(menu-toggle)) { display: none; }
+.templates { display: flex; flex-wrap: wrap; min-inline-size: 0; gap: 6px; margin: 0; padding: 0; border: 0; }
+.templates button { min-height: 32px; padding: 3px 9px; font-size: 13px; }
+.hint { color: var(--muted); font-size: 12px; }

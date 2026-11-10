@@ -1,0 +1,145 @@
+.page { min-height: 100vh; display: grid; place-items: center; padding: 32px 20px; }
+.card {
+  width: min(440px, 100%); display: grid; gap: 18px; padding: 32px 28px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: 0 8px 30px #1521460f;
+}
+.card h1 { font-size: 22px; }
+.muted { color: var(--muted); font-size: 14px; }
+.stack { display: grid; gap: 12px; }
+.passwordForm { padding-top: 16px; border-top: 1px solid var(--line); }
+.label { display: grid; gap: 6px; font-weight: 650; font-size: 14px; }
+.input {
+  min-height: 46px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px;
+  font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.primary, .secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 46px; padding: 8px 18px; border-radius: 10px; font-weight: 700;
+}
+.primary { border: 0; color: white; background: var(--accent); }
+.primary:hover:not(:disabled) { background: var(--accent-hover); }
+.primary:disabled { opacity: 0.6; }
+.secondary { border: 1px solid var(--line); color: var(--ink); background: var(--surface); }
+.error { color: #a1272c; font-size: 14px; }
+
+.shell { max-width: 1080px; margin: 0 auto; padding: 24px 24px 56px; display: grid; gap: 24px; }
+.shellHeader { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.shellHeader h1 { font-size: 22px; }
+.shellLinks { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.shellLinks a, .logoutLink { color: var(--accent); font-weight: 650; }
+.logoutLink { display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; text-decoration: underline; }
+.slot { padding: 24px; border: 1px dashed var(--line); border-radius: 14px; background: var(--surface); }
+.courseList { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.courseCard { display: grid; gap: 12px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.courseCard h2 { font-size: 18px; }
+.courseHeading { display: flex; align-items: baseline; gap: 8px 12px; flex-wrap: wrap; }
+.courseHeading h2 { overflow-wrap: anywhere; }
+.courseRoles { display: flex; gap: 6px; }
+.roleTag { padding: 2px 9px; border-radius: 999px; background: var(--tint); color: var(--accent); font-size: 12px; font-weight: 650; }
+.courseActions { display: flex; gap: 8px; flex-wrap: wrap; }
+.actionLink, .actionButton { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 10px; color: var(--accent); font-weight: 700; font-family: inherit; font-size: inherit; background: var(--surface); cursor: pointer; text-decoration: none; }
+.actionLink:hover, .actionButton:hover { background: var(--tint); }
+.primaryLink { background: var(--accent); border-color: var(--accent); color: white; }
+.primaryLink:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.plainInput { min-height: 44px; width: 100%; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; }
+.joinDetails summary { cursor: pointer; font-weight: 650; }
+.joinDetails[open] summary { margin-bottom: 12px; }
+
+/* 4列レスポンシブ・グリッド */
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* クリッカブルな講義カード */
+.courseCardLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.courseCardLink:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.cardArrow {
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.courseCardLink:hover .cardArrow {
+  transform: translateX(3px);
+  color: var(--accent);
+}
+
+.courseCardTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.courseCardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  gap: 8px;
+}
+
+/* セクション分け */
+.courseSection {
+  display: grid;
+  gap: 14px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionHeader h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.countBadge {
+  font-size: 12px;
+  font-weight: 650;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--line);
+  color: var(--muted);
+}
+
+.dialogContent {
+  display: grid;
+  gap: 16px;
+  padding: 8px 0;
+}

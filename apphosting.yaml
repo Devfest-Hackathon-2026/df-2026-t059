@@ -1,0 +1,7 @@
+# App root: repository root. Choose Node.js 24 for the backend.
+runConfig:
+  minInstances: 0
+  maxInstances: 2
+
+# When Vertex AI is enabled, configure VERTEX_AI_LOCATION and GEMINI_MODEL at
+# runtime and grant the App Hosting service account access to Vertex AI.

@@ -1,0 +1,51 @@
+{
+  "name": "gdgoc-question-support",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.12.0 <25"
+  },
+  "packageManager": "npm@10.9.4",
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "lint": "biome lint src scripts",
+    "typecheck": "next typegen && tsc --noEmit",
+    "emulators": "bash .devcontainer/start-emulators.sh",
+    "check:ai": "node --conditions=react-server scripts/check-ai-workflow.ts",
+    "check:preview": "node --conditions=react-server --test scripts/check-preview-chat.ts",
+    "check:preview:http": "node scripts/check-preview-http.ts",
+    "check:firestore": "firebase emulators:exec --only firestore,auth --project demo-gdgoc-japan-hackathon-2026 \"node --conditions=react-server scripts/check-firestore.ts\"",
+    "check:rules": "node --conditions=react-server --test scripts/check-rules.ts scripts/check-dto.ts scripts/check-ai-steps.ts scripts/check-location.ts",
+    "check:auth": "firebase emulators:exec --only auth --project demo-gdgoc-japan-hackathon-2026 \"node --conditions=react-server scripts/check-auth.ts\"",
+    "seed:demo": "node --conditions=react-server --env-file-if-exists=.env.local scripts/seed-demo.ts",
+    "check:client": "node --experimental-transform-types --test scripts/check-client-recovery.ts",
+    "check:browser": "playwright test --config=scripts/browser/playwright.config.ts"
+  },
+  "dependencies": {
+    "@google/genai": "2.32.0",
+    "firebase": "13.2.0",
+    "firebase-admin": "14.5.0",
+    "katex": "0.16.47",
+    "mathlive": "0.111.4",
+    "next": "16.4.5",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-markdown": "10.1.0",
+    "rehype-katex": "7.0.1",
+    "remark-gfm": "4.0.1",
+    "remark-math": "6.0.0",
+    "server-only": "0.0.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.5",
+    "@playwright/test": "1.65.0",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3"
+  }
+}

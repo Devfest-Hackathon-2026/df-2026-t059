@@ -1,34 +1,65 @@
-# 秘密情報（コミットしない）
+# 依存・ビルド成果物
+node_modules/
+.next/
+out/
+build/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+
+# 秘密情報（絶対にコミットしない）
 .env
 .env.*
 !.env.example
 .dev.vars
-.dev.vars.*
-!.dev.vars.example
+.firebaserc.local
+service-account*.json
+serviceAccount*.json
+*-firebase-adminsdk-*.json
+application_default_credentials.json
 *.pem
 *.key
-*.p12
-service-account*.json
-credentials*.json
-google-services.json
-GoogleService-Info.plist
 
-# 依存関係とビルドの成果物
-node_modules/
-dist/
-build/
-out/
-.next/
-.wrangler/
-__pycache__/
-*.pyc
-.venv/
-venv/
+# Firebase / Emulator のローカルデータ
+.firebase/
+.emulator-data/
+*-debug.log
+*-debug.*.log
+ui-debug.log
 
-# OS とエディタ
+# Gemini 評価の生データ（集計結果は docs に残す）
+.gemini-eval/
+
+# OS・エディタ
 .DS_Store
 Thumbs.db
 .idea/
-.vscode/*
-!.vscode/extensions.json
-*.log
+.vscode/
+
+# 提出しない：開発用のプレビュー画面（本番では無効）
+src/app/preview/
+src/app/api/preview/
+src/features/preview/
+src/features/teacher/preview/
+scripts/check-preview-chat.ts
+scripts/check-preview-http.ts
+
+# 提出しない：チーム内の作業用ドキュメント
+test/
+docs/implementation/
+docs/demo/
+docs/overview.md
+docs/plan.md
+docs/product-spec.md
+docs/confirmed-requirements.md
+docs/team-change-requests.md
+docs/hackathon/progress.md
+docs/hackathon/system-analysis.md
+docs/hackathon/ai-evaluation.md
+docs/hackathon/architecture-explanation.md
+docs/hackathon/architecture.mmd
+docs/hackathon/architecture.pdf
+docs/hackathon/gemini-model-evaluation-plan.md

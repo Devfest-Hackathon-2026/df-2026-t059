@@ -1,0 +1,727 @@
+.error {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 10px;
+  margin-bottom: 12px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  color: #8a1f2c;
+  background: #fdecee;
+  overflow-wrap: anywhere;
+}
+
+.error > span {
+  min-width: 0;
+  flex: 1 1 220px;
+}
+
+.retryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.retryButton:hover,
+.retryButton:focus-visible,
+.retryButton:active {
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
+}
+
+.retryButton[aria-disabled="true"] { cursor: wait; }
+
+.retryButton .retrySpinner {
+  border-color: #ffffff55;
+  border-top-color: #fff;
+}
+
+.status {
+  padding: 12px;
+  color: var(--muted);
+}
+
+.select {
+  display: block;
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 400;
+  background: var(--surface);
+  border: 1px solid #bcc9dd;
+  border-radius: 9px;
+}
+
+.draftTitle {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 440px) {
+  .draftTitle {
+    flex: 1 1 55%;
+  }
+}
+
+.collapsible {
+  margin-top: 16px;
+}
+
+.collapsible > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.categoryFilter {
+  margin-block: 0 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.categoryFilter summary { min-height: 36px; align-content: center; cursor: pointer; font-weight: 650; }
+.categoryFilter fieldset { display: flex; flex-wrap: wrap; gap: 0 16px; margin: 0; padding: 0; border: 0; }
+.categoryFilter label { display: inline-flex; align-items: center; gap: 6px; min-height: 42px; overflow-wrap: anywhere; }
+.categoryFilter input { width: 1.1em; height: 1.1em; accent-color: var(--accent); }
+
+.collapsible:not([open]) > summary {
+  border-bottom: 0;
+}
+
+.collapsible > summary::-webkit-details-marker {
+  display: none;
+}
+
+.collapsible > summary::before {
+  content: "+";
+  color: var(--accent);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.collapsible[open] > summary::before {
+  content: "−";
+}
+
+/* 閉じる前の確認と、送信中に閉じようとしたときの案内 */
+.busyHint {
+  margin-bottom: 12px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  color: var(--waiting);
+  background: var(--waiting-tint);
+}
+
+.confirmDialog {
+  width: min(420px, calc(100% - 28px));
+}
+
+.confirmTitle {
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.confirmActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.discard {
+  background: #a3283a;
+}
+
+.discard:hover:enabled {
+  background: #8a1f2c;
+}
+
+/* 横長ダイアログ：左に編集・閲覧、右に元の会話 */
+.wideDialog {
+  width: min(1120px, calc(100% - 28px));
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.splitMain {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.sourcePanel {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--background);
+}
+
+.sourceHeading {
+  padding: 10px 12px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sourceScroll {
+  max-height: min(62vh, 640px);
+  overflow: auto;
+}
+
+.sourceScroll :global(.conversation) {
+  padding: 12px;
+}
+
+.readonly {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+
+.readonly dt {
+  font-weight: 650;
+}
+
+.readonly dd {
+  margin: 0 0 10px;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--background);
+  overflow-wrap: anywhere;
+}
+
+.versionAnswer {
+  margin: 8px 0;
+}
+
+/* 回答欄の下の、生徒への表示（Markdown・数式）のプレビュー */
+.answerPreview {
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+
+.answerPreviewSummary {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.answerPreview[open] > .answerPreviewSummary {
+  margin-bottom: 6px;
+}
+
+.previewHint {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.previewHeading {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* 長い回答でも、入力欄と見比べられる高さに収める */
+.previewBody {
+  max-height: 240px;
+  overflow: auto;
+}
+
+.actionsEnd {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.draftMeta {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.hint {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.versions {
+  margin: 0 0 14px;
+}
+
+.versionsHeading {
+  margin: 0 0 2px;
+  font-size: 0.95rem;
+}
+
+.versionList {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.versionItem {
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--background);
+}
+
+.versionSummary {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  padding-right: 24px;
+  cursor: pointer;
+  list-style: none;
+  overflow-wrap: anywhere;
+}
+
+.versionSummary::-webkit-details-marker {
+  display: none;
+}
+
+.versionSummary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.versionItem[open] > .versionSummary::after {
+  content: "−";
+}
+
+.versionItem > p {
+  margin: 8px 0;
+}
+
+.versionMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.formActionsMain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* 長い候補でも「共有する」が画面外に隠れないよう、ダイアログの下端に留める。-20px はダイアログの余白の分 */
+.stickyActions {
+  position: sticky;
+  bottom: -20px;
+  z-index: 1;
+  padding: 10px 0 20px;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.panelBody {
+  padding: 14px 22px 20px;
+}
+
+.panelNote {
+  margin: 0;
+  padding: 0 22px 18px;
+}
+
+.failedDrafts {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.failedDrafts button {
+  padding-inline: 0;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+
+.settingsStack {
+  display: grid;
+  gap: 16px;
+}
+
+.settingsIntro {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.categoryList {
+  display: grid;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.categoryRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.categoryName {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-weight: 650;
+}
+
+/* 並び替えのつまみ。touch-action: none でスマホの指の動きをスクロールに取られないようにする（つまみの上だけ） */
+.dragHandle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--muted);
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.dragHandle:hover {
+  color: var(--accent);
+  background: var(--tint);
+}
+
+.dragHandle[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.categoryRowDragging {
+  position: relative;
+  z-index: 2;
+  border-radius: 9px;
+  background: var(--surface);
+  box-shadow: 0 6px 18px #15214633;
+}
+
+.categoryRowDragging .dragHandle {
+  cursor: grabbing;
+}
+
+.categoryRowShift {
+  transition: transform 120ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .categoryRowShift {
+    transition: none;
+  }
+}
+
+/* 追加欄と保存結果の案内の間をあける */
+.categoryMessages {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.categoryMessages > p {
+  margin: 0;
+}
+
+.listNote {
+  margin: 0;
+  padding: 12px 22px 0;
+}
+
+.categoryActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.inlineForm {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.inlineForm input {
+  flex: 1 1 200px;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font: inherit;
+}
+
+.inviteStatus {
+  margin: 0 0 12px;
+  font-weight: 650;
+}
+
+.issued {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--background);
+}
+
+.issued label {
+  display: grid;
+  gap: 4px;
+  font-weight: 650;
+}
+
+.copyRow {
+  display: flex;
+  gap: 8px;
+}
+
+.copyRow input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font: inherit;
+  font-weight: 400;
+}
+
+/* 教室で投影して読み上げられるよう、参加コードは大きく表示する */
+.copyRow input.codeInput {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.inviteActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.publishedFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 12px;
+  margin: 8px 0 0 47px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.confirmInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* 対応待ちの質問（先生のタスク） */
+.taskGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sectionHeading h2 {
+  font-size: 17px;
+}
+
+@media (max-width: 760px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sourceScroll {
+    max-height: 38vh;
+  }
+}
+
+.collapsible > summary h2 {
+  flex: 1;
+}
+
+/* 会話ダイアログの「共有候補をAIで作る」。返信フォームと区切る。 */
+.draftRequest {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.draftRequest > * {
+  margin: 0;
+}
+
+/* 狭い画面の「共有するQ&Aを確認」：タブと操作ボタンを固定し、中身だけをスクロールする */
+.fillDialog[open] {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - 32px);
+  overflow: hidden;
+}
+
+.tabsHost,
+.tabsLayout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.tabs {
+  display: grid;
+  flex: none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  margin-bottom: 10px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--background);
+}
+
+.tab {
+  min-height: 40px;
+  padding: 4px;
+  border: 0;
+  border-radius: 9px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.tab[aria-selected="true"] {
+  color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 1px 4px #15214619;
+}
+
+/* 入力欄のフォーカスの枠が切れないよう、負のマージンで余白を確保する */
+.tabPanel {
+  flex: 1;
+  min-height: 0;
+  margin-inline: -6px;
+  padding: 6px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.tabPanel .sourceScroll {
+  max-height: none;
+  overflow: visible;
+}
+
+.tabPanel .sourceHeading {
+  display: none;
+}
+
+.tabFooter {
+  display: grid;
+  flex: none;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.tabFooter > p {
+  margin: 0;
+}
+
+.tabFooterButtons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.studentPreview {
+  display: grid;
+  gap: 6px;
+  overflow-wrap: anywhere;
+}
+
+.studentPreviewTitle {
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.versionsToggle {
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--background);
+}
+
+.versionsToggleSummary {
+  color: var(--accent);
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.versionsToggle[open] > .versionsToggleSummary {
+  margin-bottom: 4px;
+}
+
+.versionsToggle .versionList {
+  margin-top: 8px;
+}

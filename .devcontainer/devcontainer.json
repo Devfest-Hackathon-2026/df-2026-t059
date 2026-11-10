@@ -1,0 +1,55 @@
+{
+  "name": "GDGoC Japan Hackathon - Next.js + Firebase",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "remoteUser": "node",
+  "updateRemoteUserUID": true,
+  "init": true,
+  "mounts": [
+    "source=${devcontainerId}-npm-cache,target=/home/node/.npm,type=volume",
+    "source=${devcontainerId}-firebase-cache,target=/home/node/.cache/firebase,type=volume"
+  ],
+  "forwardPorts": [3000, 4000, 8080, 9099, 9150],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js",
+      "onAutoForward": "notify"
+    },
+    "4000": {
+      "label": "Firebase Emulator UI",
+      "onAutoForward": "notify",
+      "requireLocalPort": true
+    },
+    "8080": {
+      "label": "Firestore Emulator",
+      "onAutoForward": "silent",
+      "requireLocalPort": true
+    },
+    "9099": {
+      "label": "Auth Emulator",
+      "onAutoForward": "silent",
+      "requireLocalPort": true
+    },
+    "9150": {
+      "label": "Firestore Emulator WebSocket",
+      "onAutoForward": "silent",
+      "requireLocalPort": true
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "npm.packageManager": "npm",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.eol": "\n"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.body {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  line-height: 1.7;
+}
+
+.body > :first-child { margin-top: 0; }
+.body > :last-child { margin-bottom: 0; }
+.body p { margin: 0.65em 0; white-space: pre-line; }
+.body :is(h3, h4, h5, h6) { margin: 0.9em 0 0.4em; font-size: 1em; line-height: 1.5; }
+.body :is(ul, ol) { margin: 0.65em 0; padding-inline-start: 1.5em; }
+.body li + li { margin-top: 0.2em; }
+.body li > p { margin: 0.25em 0; }
+.body input[type="checkbox"] { display: inline-block; width: auto; margin-inline-end: 0.4em; padding: 0; vertical-align: middle; }
+.body blockquote { margin: 0.65em 0; padding-inline-start: 0.9em; border-inline-start: 3px solid var(--line); color: var(--muted); }
+.body a { color: var(--accent); text-decoration: underline; text-underline-offset: 0.15em; }
+.body code { padding: 0.1em 0.3em; border-radius: 4px; background: #17233a0b; font-size: 0.9em; white-space: pre-wrap; }
+.body pre { max-width: 100%; margin: 0.65em 0; padding: 0.75em; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.body pre code { padding: 0; background: transparent; white-space: pre; overflow-wrap: normal; }
+.body hr { margin: 1em 0; border: 0; border-top: 1px solid var(--line); }
+.tableScroll { max-width: 100%; margin: 0.65em 0; overflow-x: auto; }
+.tableScroll table { border-collapse: collapse; font-size: 0.95em; }
+.tableScroll :is(th, td) { padding: 0.4em 0.65em; border: 1px solid var(--line); text-align: start; }
+.tableScroll th { background: var(--tint); }
+.body :global(.katex) { white-space: normal; }
+.body :global(.katex-display > .katex) { white-space: nowrap; }
+.body :global(.katex-display) { max-width: 100%; margin: 0.75em 0; padding-block: 0.2em; overflow-x: auto; overflow-y: hidden; }
+.body :global(.katex-error) { white-space: pre-wrap; overflow-wrap: anywhere; }
+.imageAlt { color: var(--muted); }
