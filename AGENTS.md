@@ -5,7 +5,7 @@ AIが学生の質問に答え、答えられないものは教員に回し、や
 
 このファイルは、Claude Code・Codex・Antigravity など、すべてのAIエージェント共通のルール。ツール固有の設定はそれぞれのファイル（CLAUDE.md など）に書く。
 
-> TODO: プロダクト名が決まったら書き換える
+プロダクト名は「授業の質問サポート」。デプロイ URL と使い方は README.md を参照。
 
 ## ドキュメント（docs/）
 
@@ -15,12 +15,11 @@ AIが学生の質問に答え、答えられないものは教員に回し、や
 |---|---|---|
 | `docs/decisions.md` | 決定ログ。何を、なぜ決めたか。合意済みか要確認かも書く | あり |
 | `docs/データ設計.md` | Firestoreのデータ設計、質問の状態遷移、ナレッジの連動ルール | 初期案 |
-| `docs/product-spec.md` | ハッカソン提出用のプロダクト説明ドキュメント（審査項目・Own the Why完全準拠） | あり |
-| `docs/overview.md` | ハッカソンの概要（期間、提出物、審査基準、ルール） | あり |
-| `docs/plan.md` | 計画書（機能、優先順位、デモの流れ） | あり |
-| `docs/implementation/README.md` | A〜Dの担当別実装設計書と共通契約 | 提案・要確認 |
-| `docs/implementation/c-interfaces.md` | C担当が実装した型・API・ストア（A/B/Dの接続先） | 実装済み・レビュー前 |
+| `docs/hackathon/test-report.md` | 提出前のテスト報告 | あり |
+| `docs/hackathon/gemini-model-evaluation-results.md` | Gemini のモデル比較と採用の判断 | あり |
 | `docs/著作物利用.md` | このリポジトリで追加した依存の出典とライセンス | あり |
+
+担当別の設計書や会議の記録など、チーム内の作業用ドキュメントは開発用リポジトリだけに置き、このリポジトリには含めていない。
 
 ### docs の運用ルール
 
@@ -37,13 +36,13 @@ AIが学生の質問に答え、答えられないものは教員に回し、や
 - Firestore（Firebase Admin SDK でサーバー側から読み書きする）
 - Firebase Authentication（Google と登録済みアカウントのメール／パスワード。ブラウザではログインだけに使い、サーバーで検証する）
 - Gemini を Vertex AI 経由で呼ぶ（Google Gen AI SDK）
-  - モデル名：gemini-2.5-flash、ロケーション：global（動作確認済みプロジェクト：hackathon-513708）
+  - モデル名：gemini-3.8-flash、ロケーション：global（選定の根拠は `docs/hackathon/gemini-model-evaluation-results.md`）
 - 開発環境：Dev Container（Node.js 24、npm、Firebase CLI、Java 21）。セットアップは README.md を参照
 - リージョン（初期値）：App Hosting は asia-east1、Firestore は asia-northeast1
 
 ## 設計方針（提出用アプリ）
 
-以下は提出用アプリの方針。`test/` の PoC には適用しない。
+以下は提出用アプリの方針。
 
 - **認証は Firebase Authentication。生徒・教員とも Google でログインでき、審査用に登録済みアカウントのメール／パスワードも使える。** 詳細は `docs/データ設計.md` の「認証と URL」
   - 理由：生徒は授業中は学校の PC、家ではスマホと端末が変わるため、アカウントで個人を識別する
@@ -60,7 +59,7 @@ AIが学生の質問に答え、答えられないものは教員に回し、や
 ## ルール
 
 - **パッケージマネージャは npm のみ。** pnpm / yarn は使わない（lockfile は package-lock.json）
-- **`test/` は削除前提の PoC。提出用アプリにコードをコピー・流用しない（大会ルールで禁止）。提出前に `test/` を削除する**
+- **開発開始前に作った PoC のコードを、提出用アプリにコピー・流用しない（大会ルールで禁止）。** PoC は提出前に削除済み
 - 実際の値が入った `.env.local` やサービスアカウントの鍵はコミットしない。値の見本である `.env.example` はコミットする。本番の秘密の値は `apphosting.yaml` の secret（Cloud Secret Manager）で渡す
 - Gemini はサーバー側だけで呼ぶ。応答は JSON（構造化出力）で受け取り、型を検証してから使う
 - Google Cloud のクレジットは1チーム20ドル。Gemini をループやポーリングの中で呼ばない。大量のリクエストを使う前にはチームに相談する
@@ -87,12 +86,13 @@ App Hosting の設定と分担の起点は README.md を参照。
 
 ## ブランチ運用
 
-> TODO: チームで決めたルールを書く（main への直接 push の可否、ブランチ名、PR のレビュー）
+- main を直接編集せず、担当や機能ごとのブランチ（例：`feat/student-chat`、`feat/auth`）で作業する
+- 定期的に `git fetch` と `git pull` で最新を取り込み、衝突を避ける
 
-## 未決事項
+## 決まったこと
 
-- デモの場面（高校の授業／大学の講義／塾・予備校のどれで見せるか）。データ設計は「講義」を単位にしている
-- 匿名性・カテゴリの作り方は11/7に決定済み（docs/confirmed-requirements.md）
+- デモは高校の授業（数学I・二次関数）の場面で見せる。データ設計は「講義」を単位にしているので、大学の講義や塾・予備校にも使える
+- 匿名性・カテゴリの作り方は11/7に決定済み（`docs/decisions.md` の11/7の項目）
 
 <!-- BEGIN:nextjs-agent-rules -->
 

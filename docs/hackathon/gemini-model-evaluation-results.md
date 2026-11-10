@@ -1,6 +1,6 @@
 # Gemini モデル比較と提出用の採用判断
 
-2026-11-10 JST。[評価計画](gemini-model-evaluation-plan.md) に基づく比較。採用推奨は **`gemini-3.8-flash`**。現行は `gemini-3.1-flash-lite`。
+2026-11-10 JST。評価計画に基づく比較。採用は **`gemini-3.8-flash`**（11/10 に本番へ反映済み）。比較した時点の本番は `gemini-3.1-flash-lite`。
 
 ## 比較条件
 
@@ -58,7 +58,7 @@
 
 合計 **212試行、計測分は税別 US$1.114923**。中断1件の使用量は不明で、留保を含む評価側の管理額は US$2.297571。`.gemini-eval/aggregate.json` にモデル別の集計と失敗ケース、`test-results/gemini-eval-app-gemini-*.json` にローカル回帰結果を保存した。集計は Dev Container で `node scripts/gemini-eval-aggregate.mjs` を使って再現できる。
 
-評価後の読み取り確認でも、本番は `GEMINI_MODEL=gemini-3.1-flash-lite`、Vertex AI `global`、`build-2026-11-09-011` に100%のトラフィック。承認後の変更案は、App Hosting の `GEMINI_MODEL` だけを `gemini-3.8-flash` に変え、同じソースでロールアウトすること。公開後の疎通で回帰が出た場合は、元の値と元のビルドへの復元を確認する。 [設定と復元手順](gemini-model-evaluation-plan.md)
+評価後の読み取り確認でも、本番は `GEMINI_MODEL=gemini-3.1-flash-lite`、Vertex AI `global`、`build-2026-11-09-011` に100%のトラフィック。承認後の変更案は、App Hosting の `GEMINI_MODEL` だけを `gemini-3.8-flash` に変え、同じソースでロールアウトすること。公開後の疎通で回帰が出た場合は、元の値と元のビルドへの復元を確認する。 設定と復元手順
 
 ## ハッカソン提出文案
 

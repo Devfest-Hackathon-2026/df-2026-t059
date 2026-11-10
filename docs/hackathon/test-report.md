@@ -1,6 +1,6 @@
 # 提出前のテスト報告
 
-2026-11-10 JST、基準コミット `616c75f` とこの作業差分。Dev Container（Node.js 24.22.1、npm 10.9.4、Java 21、Firebase CLI 15.34.2）を使用。アプリの結合テストは `demo-gdgoc-japan-hackathon-2026` の使い捨て Emulator データと固定 AI 応答で実行する。実モデルは別のスクリプトで架空データのみを送った。アプリの構成・機能一覧は [システム調査](system-analysis.md)、AI の採点基準と観測結果は [AI 評価](ai-evaluation.md)。
+2026-11-10 JST、基準コミット `616c75f` とこの作業差分。Dev Container（Node.js 24.22.1、npm 10.9.4、Java 21、Firebase CLI 15.34.2）を使用。アプリの結合テストは `demo-gdgoc-japan-hackathon-2026` の使い捨て Emulator データと固定 AI 応答で実行する。実モデルは別のスクリプトで架空データのみを送った。アプリの構成・機能一覧は システム調査、AI の採点基準と観測結果は AI 評価。
 
 ## 確認項目
 
@@ -44,7 +44,7 @@
 | 成功 | `check-http.ts`、`check-platform-http.ts`、`check-student-http.ts`、`check-teacher-http.ts` | 本番ビルドと Emulator で認証、講義共通の権限、相談と通知、関連会話、共有候補と取り下げを確認 |
 | 成功 | `npm run check:preview:http`、`npm run check:preview:http -- --disabled` | 開発用ページと不正リクエストの検証、本番で生徒／教員ページ・API が 404。Vertex は呼び出していない |
 | 成功 | `npm run check:browser` | 本番ビルド＋Emulator＋固定 AI で3件。PC教員とスマホ生徒の通し操作、履歴の古い一覧と新しい詳細、別の相談に移動中の取得と 404 の回帰 |
-| 成功／一部未達 | 実 Vertex AI の初回5件と再確認1件 | すべて API 応答と構造の検証は成功。V3 の案内文は一部未達、V4 の表示数式の書式は指示と差あり。詳細は [AI 評価](ai-evaluation.md) |
+| 成功／一部未達 | 実 Vertex AI の初回5件と再確認1件 | すべて API 応答と構造の検証は成功。V3 の案内文は一部未達、V4 の表示数式の書式は指示と差あり。詳細は AI 評価 |
 | 失敗・本番ビルドで再検証 | Playwright の初回起動と開発サーバーでの試行 | Chromium の OS ライブラリを導入。開発モードの 127.0.0.1 で UI 操作がタイムアウトし、HMR の接続拒否も観測。本番ビルドではブラウザ3件が通過 |
 | 失敗・修正後に成功 | 初回の本番 HTTP とブラウザ検証 | HTTP では Next のストリーミング転送・404と現在の講義リンクに判定を合わせた。ブラウザでは現行の入力欄ラベル、アプリ内の通知領域、端末の実ビューポートで判定するよう修正 |
 | 未実行 | 公開 URL、実 Google アカウントの OAuth、本番の複合インデックス／IAM、実 iOS Safari・Android、全画面の実機比較 | 公開環境の接続・設定・データを今回の Emulator 結果から判断できない |

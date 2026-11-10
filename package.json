@@ -15,8 +15,6 @@
     "typecheck": "next typegen && tsc --noEmit",
     "emulators": "bash .devcontainer/start-emulators.sh",
     "check:ai": "node --conditions=react-server scripts/check-ai-workflow.ts",
-    "check:preview": "node --conditions=react-server --test scripts/check-preview-chat.ts",
-    "check:preview:http": "node scripts/check-preview-http.ts",
     "check:firestore": "firebase emulators:exec --only firestore,auth --project demo-gdgoc-japan-hackathon-2026 \"node --conditions=react-server scripts/check-firestore.ts\"",
     "check:rules": "node --conditions=react-server --test scripts/check-rules.ts scripts/check-dto.ts scripts/check-ai-steps.ts scripts/check-location.ts",
     "check:auth": "firebase emulators:exec --only auth --project demo-gdgoc-japan-hackathon-2026 \"node --conditions=react-server scripts/check-auth.ts\"",
